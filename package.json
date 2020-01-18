@@ -1,0 +1,22 @@
+{
+  "name": "bzzer",
+  "version": "1.0.0",
+  "description": "This app is a combination of Buzzfeed and Tinder. Take quizzes to find out who youre most compatible with!",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/b-zzR/Bzzer.git"
+  },
+  "author": "Eesha Jain, Fiona Zhao, Arushi Arora, Emily Amspoker",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/b-zzR/Bzzer/issues"
+  },
+  "homepage": "https://github.com/b-zzR/Bzzer#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
