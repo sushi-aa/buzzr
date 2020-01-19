@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset = "utf-8">
+		<title>Quiz</title>
+		<style>
+			body{
+        background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url(download.jpg);
+				height: 100vh;
+				background-size: cover;
+				background-position: center;
+			}
+			.login{
+				width: 360px;
+				padding: 10% 0 0;
+				margin: auto;
+			}
+			.form{
+				position: relative;
+				z-index: 1;
+				max-width: 360px;
+				margin: 0 auto 600px;
+				padding: 45px;
+				text-align: center;
+        border-radius: 15px;
+			}
+			.form input{
+				font-family: "Roboto", sans-serif;
+				outline: 1;
+				background: white;
+				width: 100%;
+				border: 0;
+				margin: 0 0 15px;
+				padding: 15px;
+				box-sizing: border-box;
+				font-size: 14px;
+				color: white;
+        border-radius: 15px;
+			}
+
+			.form #question {
+				font-family: "Roboto", sans-serif;
+				width: 100%;
+				border: 0;
+				margin: 0 0 15px;
+				padding: 15px;
+				box-sizing: border-box;
+				font-size: 14px;
+				color: white;
+
+			}
+
+			.form button:hover, .form button:active{
+				background: #8e9c24;
+			}
+
+			.form .message{
+				margin: 15px 0 0;
+				color: black;
+				font-size: 15px;
+			}
+			.form button{
+				height: 300px;
+				width: 300px;
+				border-radius: 50%;
+				display: inline-block;
+				font-family: "Roboto", sans-serif;
+				text-transform: uppercase;
+				outline: 0;
+				background: white;
+				border: 0;
+				padding: 15px;
+				color: white;
+				font-size: 14px;
+				cursor: pointer;
+        border-radius: 15px;
+			}
+			#circle{
+				height: 150px;
+				width: 150px;
+				border-radius: 50%;
+				display: inline-block;
+				padding: 30px;
+			}
+			.form a{
+				font-family: "Roboto", sans-serif;
+				width: 100%;
+				color: white;
+				font-size: 14px;
+        border-radius: 15px;
+				width: 100%;
+				border: 0;
+				margin: 0 0 15px;
+				padding: 15px;
+				box-sizing: border-box;
+			}
+
+			.answers {
+				display: grid;
+				grid-template: 150px/ auto auto;
+			}
+		</style>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+  $("a").on('click', function(event) {
+    if (this.hash !== "") {
+      event.preventDefault();
+
+
+      var hash = this.hash;
+      $('html, body').animate({
+        scrollTop: $(hash).offset().top
+      }, 800, function(){
+
+        window.location.hash = hash;
+      });
+    }
+  });
+});
+
+</script>
+
+	</head>
+	<body>
+		<div class="login">
+		<div class="form" id="q0">
+			<form class="login-form">
+			<input id = "name" type="text" placeholder="Name"/>
+			<input type="text" placeholder="Email/Phone Number/Social Media"/>
+			<a href="#q1">Submit</a>
+			</form>
+		</div>
+
+    <div class="form" id="q1">
+      <form class="login-form">
+			<h1 id="question">What??</h1>
+			<div class="answers">
+			<button id = "circle"></button>
+			<button id = "circle"></button>
+			<button id = "circle"></button>
+			<button id = "circle"></button>
+		</div>
+			<a href="#q0">Submit</a>
+			</form>
+    </div>
+
+
+
+
+		</div>
+		<script src="https://code.jquery.com/jquery-3.2.1.min.js">  </script>
+		<script>
+		$('.message a').click(function(){
+		$('form').animate({height: "toggle", opacity: "toggle"}, "slow");
+		});
+		</script>
+	</body>
+</html>
