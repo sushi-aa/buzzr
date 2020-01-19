@@ -77,7 +77,8 @@ function matchUser(newUser){
 				non_matching_person = userArray[i];
 			}
 		}
-	}	
+	}
+	let setDoc = db.collection('users').doc(ID).set(newUser);	
 	// console.log(newUser.Name + " matches most with " + matching_person.Name);
 	// console.log(matching_person)
 	// console.log(newUser.Name + " matches least with " + non_matching_person.Name);
@@ -100,14 +101,7 @@ allusers.onSnapshot(function(querySnapshot){
 })
 
 app.get('/', (req, res) => {
-	let newUser = {
-		Name: Name,
-		Age: Age,
-		Email: Email,
-		Phone_Number: Phone_Number,
-		Answers: Answers
-	}; 
-	let setDoc = db.collection('users').doc(ID).set(newUser);
+	
 	let setDoc = db.collection('users').doc(ID).set(newUser);
 
 	res.send(non_matching_person);
