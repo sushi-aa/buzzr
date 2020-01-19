@@ -78,7 +78,7 @@ function matchUser(newUser){
 			}
 		}
 	}
-	let setDoc = db.collection('users').doc(ID).set(newUser);	
+	db.collection('users').doc(ID).set(newUser);	
 	// console.log(newUser.Name + " matches most with " + matching_person.Name);
 	// console.log(matching_person)
 	// console.log(newUser.Name + " matches least with " + non_matching_person.Name);
