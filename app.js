@@ -20,13 +20,13 @@ var firebaseConfig = {
 let ID = '_' + Math.random().toString(36).substr(2, 9);
 let db = firebase.firestore();
 
-/*let newUser = {
+let newUser = {
 	Name: Name,
 	Age: Age,
 	Email: Email,
 	Phone_Number: Phone_Number,
 	Answers: Answers
-}; */
+};
 
 let userArray = [];
 let allusers = db.collection("users");
