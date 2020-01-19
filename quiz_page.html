@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset = "utf-8">
+		<link href="https://fonts.googleapis.com/css?family=Playfair+Display|Poppins&display=swap" rel="stylesheet">
+
+		<title>Quiz</title>
+		<style>
+			body{
+        background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url(download.jpg);
+				height: 100vh;
+				background-size: cover;
+				background-position: center;
+			}
+			.login{
+				padding: 10% 0 0;
+				margin: auto;
+			}
+			.form{
+				position: relative;
+				z-index: 1;
+				margin: 0 auto 600px;
+				padding: 45px;
+				text-align: center;
+        border-radius: 15px;
+			}
+			.form input{
+				font-family: 'Poppins', sans-serif;
+				background-color:rgba(0, 0, 0, 0);
+    			color:white;
+    			border: none;
+				outline:none;
+				margin: 0 0 10px;
+				box-sizing: border-box;
+				font-size: 24px;
+        		border-radius: 15px;
+				width: 800px;
+			}
+
+			.form #question {
+				font-family: 'Poppins', sans-serif;
+				width: 100%;
+				border: 0;
+				margin: 0 0 15px;
+				padding: 15px;
+				box-sizing: border-box;
+				font-size: 14px;
+				color: white;
+				text-align: center;
+
+			}
+
+			.form #best, .form #worst {
+				font-family: 'Poppins', sans-serif;
+				width: 100%;
+				border: 0;
+				margin: 40px 0 15px;
+				padding: 15px;
+				box-sizing: border-box;
+				font-size: 14px;
+				color: white;
+				text-align: center;
+			}
+
+			.form button:hover, .form button:active, .form button:focus{
+				background: yellow;
+			}
+
+			.form button {
+				height: 300px;
+				width: 300px;
+				border-radius: 50%;
+				display: inline-block;
+				font-family: 'Playfair Display', serif;
+				text-transform: uppercase;
+				outline: 0;
+				background: white;
+				border: 0;
+				padding: 15px;
+				color: #ff33cc;
+				font-size: 14px;
+				cursor: pointer;
+        border-radius: 15px;
+			}
+
+			#circle{
+				height: 150px;
+				width: 150px;
+				border-radius: 50%;
+				display: inline-block;
+
+			}
+			.form a{
+				font-family: 'Playfair Display', serif;
+				width: 100%;
+				color: white;
+				font-size: 14px;
+        border-radius: 15px;
+				width: 100%;
+				border: 0;
+				margin: 0 0 15px;
+				padding: 15px;
+				box-sizing: border-box;
+			}
+
+			.answers {
+				text-align: center;
+				display: grid;
+				grid-template: 'button button' 'button button';
+				grid-gap: 30px;
+				padding: 40px;
+				width: 330px;
+				margin: 0 AUTO;
+			}
+
+			#test{
+				color: white;
+			}
+
+		</style>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+  $("a").on('click', function(event) {
+    if (this.hash !== "") {
+      event.preventDefault();
+
+
+      var hash = this.hash;
+      $('html, body').animate({
+        scrollTop: $(hash).offset().top
+      }, 800, function(){
+
+        window.location.hash = hash;
+      });
+    }
+  });
+});
+
+</script>
+
+
+<script type="text/javascript">
+	var Answers = ['a','a','a','a','a','a','a','a','a','a'];
+	var Name = "ryan";
+	var Organization = "unempathetic";
+	var Age = "2098";
+	var Email = "43dg@gmsdifl.conm";
+	var Phone_Number = "234r234";
+
+
+	function showResults(){
+
+		let arushianswer = {
+			Name: Name,
+			Age: Age,
+			Answers: Answers,
+			Email: Email,
+			Phone_Number: Phone_Number,
+			Organization: Organization
+		}
+		console.log(JSON.stringify(arushianswer))
+		let url = `https://38b2ddf3.ngrok.io/submit?data=`;
+		fetch(url + (JSON.stringify(arushianswer))).then(resp => {
+			return resp.json();
+		}).then(resp => {
+			console.log(resp);
+			showText(resp.soul_mate_best_match, resp.soul_mate_email, resp.soul_mate_phone_number);
+			showText2(resp.opposites_attract_worst_match, resp.opposites_attract_email, resp.opposites_attract_phone_number);
+			console.log(resp.soul_mate_best_match);
+		
+		});
+	}
+
+	function showText(name, email, phone){
+		document.getElementById("best").innerHTML = "BEST MATCH: " + name + ", " + email + ", " + phone;
+	}
+
+	function showText2(name, email, phone){
+		document.getElementById("worst").innerHTML = "WORST MATCH: " + name + ", " + email + ", " + phone;
+	}
+
+
+	function storeInfo(){
+		Name = document.getElementById("name").value;
+		Organization = document.getElementById("organization").value;
+		Age = document.getElementById("age").value;
+		Email = document.getElementById("email").value;
+		Phone_Number = document.getElementById("phone").value;
+	}
+
+
+
+function getAnswer(obj){
+	Answers[obj.value] = obj.className;
+	var num = parseInt(obj.value, 10) + 1;
+	var submit = "submit" + num;
+
+	document.getElementById(submit).click();
+}
+
+
+
+
+</script>
+
+
+	</head>
+	<body>
+		<div class="login">
+		<div class="form" id="q0">
+			<form class="login-form">
+			<div>
+			<input id = "name" type="text" placeholder="Name"/>
+		</div>
+
+		<div>
+		<input id = "organization" type="text" placeholder="Organization"/>
+	</div>
+
+		<div>
+			<input id = "age" type="text" placeholder="Age"/>
+		</div>
+		<div>
+			<input id = "email" type="text" placeholder="Email"/>
+		</div>
+		<div>
+			<input id = "phone" type="text" placeholder="Phone"/>
+		</div>
+			<div>
+			<a href="#q1" class="no" onclick = "return storeInfo();">Submit</a>
+		</div>
+			</form>
+		</div>
+
+    <div class="form" id="q1">
+			<h1 id="question">Which word best describes your personality type?</h1>
+			<div class="answers">
+			<button value=0 class="a" id = "circle" onclick="return getAnswer(this);">Introvert</button>
+			<button value=0 class="b" id = "circle" onclick="return getAnswer(this);">Extrovert</button>
+			<button value=0 class="c" id = "circle" onclick="return getAnswer(this);">Ambivert</button>
+			<button value=0 class="d" id = "circle" onclick="return getAnswer(this);">Don't know</button>
+		</div>
+			<a href="#q2" id="submit1"></a>
+    </div>
+
+		<div class="form" id="q2">
+			<h1 id="question">What is the most important trait for you in a friendship?</h1>
+			<div class="answers">
+			<button value=1 class="a" id = "circle" onclick="return getAnswer(this);">Honesty</button>
+			<button value=1 class="b" id = "circle" onclick="return getAnswer(this);">Loyalty</button>
+			<button value=1 class="c" id = "circle" onclick="return getAnswer(this);">Sense of Humor</button>
+			<button value=1 class="d" id = "circle" onclick="return getAnswer(this);">Empathy</button>
+		</div>
+			<a href="#q3" id="submit2"></a>
+    </div>
+
+
+		<div class="form" id="q3">
+			<h1 id="question">What sounds like the most fun to you?</h1>
+			<div class="answers">
+			<button value=2 class="a" id = "circle" onclick="return getAnswer(this);">Going out to a party</button>
+			<button value=2 class="b" id = "circle" onclick="return getAnswer(this);">Reading books and watching movies</button>
+			<button value=2 class="c" id = "circle" onclick="return getAnswer(this);">Sitting in a car and talking with someone</button>
+			<button value=2 class="d" id = "circle" onclick="return getAnswer(this);">Going for a walk together</button>
+		</div>
+			<a href="#q4" id="submit3"></a>
+    </div>
+
+
+		<div class="form" id="q4">
+			<h1 id="question">What is one word you would use to describe yourself?</h1>
+			<div class="answers">
+			<button value=3 class="a" id = "circle" onclick="return getAnswer(this);">Open minded</button>
+			<button value=3 class="b" id = "circle" onclick="return getAnswer(this);">Passionate</button>
+			<button value=3 class="c" id = "circle" onclick="return getAnswer(this);">Intellectual</button>
+			<button value=3 class="d" id = "circle" onclick="return getAnswer(this);">Empathetic</button>
+		</div>
+			<a href="#q5" id="submit4"></a>
+    </div>
+
+
+		<div class="form" id="q5">
+			<h1 id="question">What type of things do you enjoy talking about?</h1>
+			<div class="answers">
+			<button value=4 class="a" id = "circle" onclick="return getAnswer(this);">small talk</button>
+			<button value=4 class="b" id = "circle" onclick="return getAnswer(this);">deep conversations</button>
+			<button value=4 class="c" id = "circle" onclick="return getAnswer(this);">things I am passionate about</button>
+			<button value=4 class="d" id = "circle" onclick="return getAnswer(this);">it doesn't matter to me</button>
+		</div>
+			<a href="#q6" id="submit5"></a>
+    </div>
+
+
+		<div class="form" id="q6">
+			<h1 id="question">What Hogwarts house are you in ?</h1>
+			<div class="answers">
+			<button value=5 class="a" id = "circle" onclick="return getAnswer(this);">Gryffindor</button>
+			<button value=5 class="b" id = "circle" onclick="return getAnswer(this);">Hufflepuff</button>
+			<button value=5 class="c" id = "circle" onclick="return getAnswer(this);">Slytherin</button>
+			<button value=5 class="d" id = "circle" onclick="return getAnswer(this);">Ravenclaw</button>
+		</div>
+			<a href="#q7" id="submit6"></a>
+    </div>
+
+
+		<div class="form" id="q7">
+			<h1 id="question">What kind of support do you expect in a friendship?</h1>
+			<div class="answers">
+			<button value=6 class="a" id = "circle" onclick="return getAnswer(this);">listening and empathy</button>
+			<button value=6 class="b" id = "circle" onclick="return getAnswer(this);">support of my decisions</button>
+			<button value=6 class="c" id = "circle" onclick="return getAnswer(this);">helping you out with your responsibilities</button>
+			<button value=6 class="d" id = "circle" onclick="return getAnswer(this);">It does not matter to me</button>
+		</div>
+			<a href="#q8" id="submit7"></a>
+    </div>
+
+
+		<div class="form" id="q8">
+			<h1 id="question">Is developing a strong emotional connection with a friend important to you?</h1>
+			<div class="answers">
+			<button value=7 class="a" id = "circle" onclick="return getAnswer(this);">Yes, very much</button>
+			<button value=7 class="b" id = "circle" onclick="return getAnswer(this);">I would prefer it, but not necessary</button>
+			<button value=7 class="c" id = "circle" onclick="return getAnswer(this);">I do not at all want to be emotionally attached</button>
+			<button value=7 class="d" id = "circle" onclick="return getAnswer(this);">I am fine either way</button>
+		</div>
+			<a href="#q9" id="submit8"></a>
+    </div>
+
+		<div class="form" id="q9">
+			<h1 id="question">What annoys you the most?</h1>
+			<div class="answers">
+			<button value=8 class="a" id = "circle" onclick="return getAnswer(this);">a friend who uses you as a therapist</button>
+			<button value=8 class="b" id = "circle" onclick="return getAnswer(this);">a friend who cannot carry a conversation </button>
+			<button value=8 class="c" id = "circle" onclick="return getAnswer(this);">a friend who is unempathetic</button>
+			<button value=8 class="d" id = "circle" onclick="return getAnswer(this);">a friend who is very private</button>
+		</div>
+			<a href="#q10" id="submit9"></a>
+    </div>
+
+		<div class="form" id="q10">
+			<h1 id="question">What is one thing that your friend should not be?</h1>
+			<div class="answers">
+			<button value=9 class="a" id = "circle" onclick="return getAnswer(this);">clingy</button>
+			<button value=9 class="b" id = "circle" onclick="return getAnswer(this);">brutally honest</button>
+			<button value=9 class="c" id = "circle" onclick="return getAnswer(this);">too talkative</button>
+			<button value=9 class="d" id = "circle" onclick="return getAnswer(this);">not talkative at all</button>
+		</div>
+	</div>
+			<a href="#results" id="submit10"></a>
+		<div class="form" id="results">
+			<a href="#results" onclick = "showResults();">Display Results</a>
+			<div>
+				<h1 id="best"></h1>
+				<h1 id="worst"></h1>
+			</div>
+		</div>
+
+
+	</body>
+</html>
