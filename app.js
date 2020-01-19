@@ -2,6 +2,7 @@ const express = require('express');
 var firebase = require("firebase/app");
 require("firebase/firestore");						
 const app = express();
+var cors = require('cors')
 const port = 3000;
 
 var firebaseConfig = {
@@ -20,14 +21,9 @@ var firebaseConfig = {
 let ID = '_' + Math.random().toString(36).substr(2, 9);
 let db = firebase.firestore();
 
-let newUser = {
-	Name: Name,
-	Age: Age,
-	Email: Email,
-	Phone_Number: Phone_Number,
-	Answers: Answers
-};
 
+
+app.use(cors())
 let userArray = [];
 let allusers = db.collection("users");
 
@@ -104,6 +100,14 @@ allusers.onSnapshot(function(querySnapshot){
 })
 
 app.get('/', (req, res) => {
+	let newUser = {
+		Name: Name,
+		Age: Age,
+		Email: Email,
+		Phone_Number: Phone_Number,
+		Answers: Answers
+	}; 
+	let setDoc = db.collection('users').doc(ID).set(newUser);
 	let setDoc = db.collection('users').doc(ID).set(newUser);
 
 	res.send(non_matching_person);
