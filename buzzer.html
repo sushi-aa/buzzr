@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link href="https://fonts.googleapis.com/css?family=Playfair+Display|Poppins&display=swap" rel="stylesheet"> 
+		<link href="https://fonts.googleapis.com/css?family=Bungee+Shade|Ewert|Fredericka+the+Great&display=swap" rel="stylesheet"> 
+		<meta charset = "utf-8">
+		<title> BUZZR </title>
+		<style>
+			*{
+				margin: 0;
+				padding: 0;
+				font-family: serif;
+			}
+			header{
+				
+				background-size: cover;
+				background-position: center;
+				height: 100vh;
+				background-image:linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url(https://wallpapertag.com/wallpaper/full/6/8/7/483339-popular-background-dark-3840x2160-for-ipad.jpg);
+
+			}
+			ul{
+				position: absolute;
+				right: 7%;
+				top: 5%;
+				list-style-type: none;
+				margin-top: 20px;
+				font-size: 17px;
+			}
+			ul li{
+				display: inline-block;
+				font-family: 'Playfair Display', serif;
+
+			}
+			ul li a{
+				color: #fff;
+				text-decoration: none;
+				border: 2px solid transparent;
+				border-radius: 5px;
+				padding: 10px;
+
+			}
+			ul li.current a{
+				color: #000;
+				background-color: white;
+			}
+			ul li a:hover{
+				color: #000;
+				background-color: white;
+			}
+			
+			.title {
+				float: left;
+				font-size: 20px;
+				color: white;
+				padding: 10px;
+			
+
+			}
+			.welcome{
+				color: black;
+				float: center;
+				
+				padding: 20px;
+				position: absolute;
+				left: 19%;
+				top: 23%;
+
+				font-family: 'Bungee Shade', cursive;
+				text-shadow: 1px 2px 2px #ff33cc;
+
+				font-style: oblique;
+				font-size: 30px;
+				font-weight: 600;
+				letter-spacing: 2px;
+
+			}
+			.describe{
+				color: black;
+				text-shadow: 1px 1px 1px yellow;
+				padding: 5px;
+				position: absolute;
+				left: 16%;
+				top: 40%;
+				font-weight: 600;
+				font-size: 18px;
+				font-family: 'Playfair Display', serif;
+
+
+			}
+
+			.start{
+				color: black;
+				float: center;
+				border: 5px solid #ff33cc;
+				padding: 5px;
+				position: absolute;
+				left: 48%;
+				top: 48%;
+				font-weight: 600;
+				font-size: 18px;
+				font-family: 'Playfair Display', serif;
+				border-radius: 15px;
+				animation: text 3s infinite;
+			}
+
+			.start:hover{
+				background-color: #ff33cc;
+				border: 5px solid yellow;
+				
+			}
+			.pic{
+				position:absolute;
+				left: 38%;
+				top: 60%;
+			
+				padding: 5px;
+				outline: 4px dashed #ff33cc;
+				border: 3px solid white;
+			}
+			.contact{
+				position: absolute;
+				left: 5%;
+				bottom: 5%;
+				color: #aaaaaa;
+				font-family: 'Playfair Display', serif;
+
+			}
+			
+			@keyframes text{
+				20%{
+					color: white;
+					margin-bottom: -20px;
+				}
+				50%{
+					color: black;
+
+				}
+				80%{
+					color: white;
+				}
+
+			}
+
+
+
+		</style>
+	</head>
+
+	<body>
+		<header>
+			<div class="header1">
+				
+				<ul>
+					<li class="current"><a href="#">Home</a></li>
+					<li><a href="instructions.html">Instructions</a></li>
+					<li><a href="quiz_page.html">Start</a></li>
+
+
+				</ul>
+
+			</div>
+
+	
+			<div class="title">
+				<figure class="image1">
+					<img src="logo.png" width="250" height="200">
+				
+				</figure>
+
+			</div>
+
+			<div class="pic">
+				<figure>
+					<img src=https://timesofindia.indiatimes.com/blogs/wp-content/uploads/2017/06/friendship.jpg width="380" height="290">
+				</figure>
+			</div>
+
+		
+			<div class="description">
+
+				<p class="welcome">
+					WELCOME TO BUZZR!
+				</p>
+				<p class="describe">
+					Based on a series of 10 questions, you will be able to find a female mentor that you can hopefully relate to on a personal level!
+				</p>
+				<a class="start" href="quiz_page.html" class="b" >Start Quiz!</a>
+
+
+			</div>
+
+			<div class="contact">
+				<p>
+					Emily A, Arushi A, Eesha J, Fiona Z
+				</p>
+			</div>
+		</header>
+
+	</body>
+</html>
+
